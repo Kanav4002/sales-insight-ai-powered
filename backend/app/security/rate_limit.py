@@ -3,7 +3,7 @@ import time
 from collections import defaultdict, deque
 from typing import Deque, Dict
 
-from fastapi import Depends, HTTPException, Request, status
+from fastapi import HTTPException, Request, status
 
 from ..config import settings
 
@@ -22,7 +22,7 @@ def get_client_ip(request: Request) -> str:
     return "unknown"
 
 
-def rate_limiter(request: Request = Depends()) -> None:
+async def rate_limiter(request: Request) -> None:
     ip = get_client_ip(request)
     now = time.time()
     window_seconds = 60
@@ -30,7 +30,6 @@ def rate_limiter(request: Request = Depends()) -> None:
 
     dq = _requests_per_ip[ip]
 
-    # Drop timestamps older than window
     while dq and dq[0] <= now - window_seconds:
         dq.popleft()
 
@@ -42,4 +41,3 @@ def rate_limiter(request: Request = Depends()) -> None:
         )
 
     dq.append(now)
-
