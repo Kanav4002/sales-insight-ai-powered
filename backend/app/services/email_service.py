@@ -30,12 +30,10 @@ async def send_summary_email(recipient: str, summary: str) -> None:
 
     context = ssl.create_default_context(cafile=certifi.where())
     try:
-        with smtplib.SMTP(settings.smtp_host, settings.smtp_port) as server:
+        with smtplib.SMTP(settings.smtp_host, settings.smtp_port, timeout=15) as server:
             server.starttls(context=context)
             server.login(settings.smtp_user, settings.smtp_password)
             server.send_message(message)
             logger.info("Email successfully sent to %s", recipient)
-    except Exception as exc:  # pragma: no cover - network/SMTP failures
+    except Exception as exc:
         logger.exception("Failed to send email to %s: %s", recipient, exc)
-        raise
-
