@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top left, #0f172a, #020617);
+  color: #e5e7eb;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1.5rem;
+}
+
+.app-header {
+  max-width: 640px;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.app-header h1 {
+  font-size: 2.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.app-header p {
+  margin: 0;
+  color: #9ca3af;
+}
+
+.app-main {
+  width: 100%;
+  max-width: 640px;
+}
+
+.card {
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: 1rem;
+  padding: 1.75rem;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.field-group label {
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+  color: #e5e7eb;
+}
+
+.field-group input[type="file"],
+.field-group input[type="email"] {
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background-color: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  font-size: 0.95rem;
+}
+
+.field-group input[type="email"]::placeholder {
+  color: #6b7280;
+}
+
+.field-group input[type="file"]:disabled,
+.field-group input[type="email"]:disabled {
+  opacity: 0.6;
+}
+
+.primary-button {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(to right, #0ea5e9, #6366f1);
+  color: #f9fafb;
+  font-weight: 600;
+  font-size: 0.98rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, opacity 0.1s ease;
+  box-shadow: 0 12px 30px rgba(56, 189, 248, 0.4);
+}
+
+.primary-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(56, 189, 248, 0.55);
+}
+
+.primary-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.35);
+}
+
+.primary-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.status-area {
+  margin-top: 1rem;
+  min-height: 1.5rem;
+}
+
+.status-text {
+  font-size: 0.9rem;
+}
+
+.status-text.success {
+  color: #4ade80;
+}
+
+.status-text.error {
+  color: #f97373;
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    padding: 2rem 1.25rem;
+  }
+
+  .app-header h1 {
+    font-size: 1.75rem;
+  }
+}
+
