@@ -1,3 +1,4 @@
+import certifi
 import logging
 import smtplib
 import ssl
@@ -27,7 +28,7 @@ async def send_summary_email(recipient: str, summary: str) -> None:
     )
     message.set_content(body)
 
-    context = ssl.create_default_context()
+    context = ssl.create_default_context(cafile=certifi.where())
     try:
         with smtplib.SMTP(settings.smtp_host, settings.smtp_port) as server:
             server.starttls(context=context)

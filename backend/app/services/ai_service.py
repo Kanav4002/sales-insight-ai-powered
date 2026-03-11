@@ -50,7 +50,10 @@ async def generate_executive_summary(metrics: SalesMetrics) -> str:
                 "temperature": 0.3,
             }
 
+            logger.info("Calling Groq API with model=%s", settings.groq_model)
             response = await client.post(url, headers=headers, json=payload)
+            if response.status_code != 200:
+                logger.error("Groq API error %s: %s", response.status_code, response.text)
             response.raise_for_status()
             data = response.json()
 

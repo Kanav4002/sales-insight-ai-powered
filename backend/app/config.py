@@ -2,16 +2,15 @@ import logging
 from functools import lru_cache
 from typing import List
 
-from pydantic import AnyHttpUrl
 from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
     environment: str = "development"
     debug: bool = True
-    frontend_url: AnyHttpUrl | None = None
+    frontend_url: str | None = None
     groq_api_key: str | None = None
-    groq_model: str = "llama-3.1-70b-versatile"
+    groq_model: str = "llama-3.3-70b-versatile"
     smtp_host: str | None = None
     smtp_port: int = 587
     smtp_user: str | None = None
@@ -20,7 +19,7 @@ class Settings(BaseSettings):
     rate_limit_requests_per_minute: int = 5
 
     class Config:
-        env_file = ".env"
+        env_file = (".env", "../.env")
         env_file_encoding = "utf-8"
         case_sensitive = False
 
