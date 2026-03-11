@@ -6,4 +6,5 @@ pydantic[email]==2.9.2
 pydantic-settings==2.5.2
 pydantic-extra-types==2.9.0
 python-multipart==0.0.17
+certifi==2026.2.25
 pytest==8.3.3

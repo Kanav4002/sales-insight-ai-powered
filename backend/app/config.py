@@ -11,8 +11,11 @@ class Settings(BaseSettings):
     frontend_url: str | None = None
     groq_api_key: str | None = None
     groq_model: str = "llama-3.3-70b-versatile"
-    resend_api_key: str | None = None
-    resend_from_email: str = "onboarding@resend.dev"
+    smtp_host: str | None = None
+    smtp_port: int = 587
+    smtp_user: str | None = None
+    smtp_password: str | None = None
+    smtp_from_email: str | None = None
     rate_limit_requests_per_minute: int = 5
 
     class Config:
