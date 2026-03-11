@@ -135,7 +135,7 @@ ENVIRONMENT=development
 DEBUG=true
 
 GROQ_API_KEY=your_groq_api_key
-GROQ_MODEL=llama-3.1-70b-versatile
+GROQ_MODEL=llama-3.3-70b-versatile
 
 SMTP_HOST=smtp.your-provider.com
 SMTP_PORT=587
